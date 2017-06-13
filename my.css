@@ -1,3 +1,20 @@
+/* FORM IN INDEX PAGE*/
+.forms{
+  width: 40%;
+  margin: auto;
+  margin-top: 8rem;
+  margin-bottom: 8rem;
+  box-shadow: 4px 4px 4px 4px grey;
+}
+.blurred{
+  background-image: url(blurred-background-with-light-colors_1034-245.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+
+}
+
+
 #ksi {
   font-family: 'Courgette', cursive;
   font-size: 1.3em;

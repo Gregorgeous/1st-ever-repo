@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   <link rel="stylesheet" href="my.css">
 </head>
-<body>
+<body class="blurred">
 
   <div class="jumbotron jumbotron-fluid bg-danger p-1" id="jumbo" >
     <div class="container-fluid">
@@ -17,21 +17,36 @@
       <h2  id="ksi"class="text-right  ">Komisji Stopni Instruktorskich</h2>
     </div>
   </div>
-<!--  NAV =======================================-->
-  <nav>
-    <div class="container-fluid mr-auto">
-      <div class="row bg-faded display-4">
-        <div class="col-6 p-0 m-0">
-          <button type="button" class="btn btn-block clicked beingClicked"  name="button"> <a href="Main.html" class="navbar-nav text-center text-muted"> Nowy test</a> </button>
-        </div>
-          <div class="col-6 p-0" id="dividerDiv">
-            <button type="button" class="btn btn-block btn-faded beingClicked" name="button">
-              <a href="DataBase.html" class="navbar-nav text-center menu-button text-muted"> Baza testów</a>
-            </button>
-          </div>
-      </div>
+<!--  FORM =======================================-->
+<div class="container">
+<div class="card forms ">
+  <div class="card-header">
+    <h1 class="display-4 text-center">Zaloguj się do systemu</h1>
+  </div>
+  <div class="card-block">
+    <form class="text-center">
+      <fieldset class="account-info">
+        <label>
+          login
+          <input type="text" name="username">
+        </label>
+        <label>
+          hasło
+          <input type="password" name="password">
+        </label>
+      </fieldset>
+      <fieldset class="account-action">
+        <input class="btn" type="submit" name="submit" value="Login">
+        <label>
+          <input type="checkbox" name="remember"> pozostań zalogowany
+          </label>
+        </fieldset>
+      </form>
     </div>
-  </nav>
+  </div>
+</div>
+
+
 <!--  MAIN BODY ================================== -->
 <!--========= Resources ---------------------------------------->
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
