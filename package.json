@@ -1,0 +1,36 @@
+{
+  "name": "ksi-website",
+  "version": "1.0.0",
+  "description": "Website for online tests for Warsaw-Zoliborz Scout District",
+  "main": "App.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gregorgeous/1st-ever-repo.git"
+  },
+  "author": "Grzegorz Rybak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gregorgeous/1st-ever-repo/issues"
+  },
+  "homepage": "https://github.com/Gregorgeous/1st-ever-repo#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.17.2",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.3",
+    "express-session": "^1.15.3",
+    "express-validator": "^3.2.1",
+    "hbs": "^4.0.1",
+    "jsonwebtoken": "^7.4.1",
+    "moment": "^2.18.1",
+    "mongodb": "^2.2.30",
+    "mongoose": "^4.11.1",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "validator": "^8.0.0"
+  }
+}

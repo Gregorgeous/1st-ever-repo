@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test przewodnikowski</title>
+  <script src="https://use.fontawesome.com/db9af920a2.js"></script>
+  <!-- THE SETUP PARTIAL -->
+  {{> head}}
+</head>
+<body class="wrapper">
+<!-- OUR NAVIGATION BAR PARTIAL -->
+  {{>navbar}}
+  <!--  MAIN BODY ================================== -->
+  <h2 class="text-center mt-3">Dodaj nowy test do systemu</h2>
+  <div class="sticky-top">
+  <div class="bg-faded w-50 rounded mx-auto">
+    <hr>
+  </div>
+  <div class="progress bg-inverse mx-auto w-50 sticky-top" >
+    <div class="progress-bar progress-bar-striped bg-success progress-bar-animated" id="ProgressBar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+  </div>
+  <div class="bg-faded w-50 rounded mx-auto">
+    <hr>
+  </div>
+</div>
+
+<!-- FORM for adding new test into db -->
+<form method="post" action="/database/testPapers/add">
+<div class="form-group w-50 mx-auto">
+  <h3 class="text-center mt-4">Imię i nazwisko próbanta</h3>
+  <input type="text" class="form-control" id="F1-NameAndSur" name="name" >
+</div>
+<div class="form-group w-50 mx-auto">
+  <h3 class="text-center mt-4">Środowisko pełnienia służby</h3>
+  <select class="form-control" id="F2-ScoutGroup" name="scoutGroup">
+    <option></option>
+    <option>Po drodze</option>
+    <option>Rzeka</option>
+    <option>56 WDHiZ "Arkadia"</option>
+    <option>77</option>
+    <option>121</option>
+    <option>123</option>
+    <option>125</option>
+    <option>127</option>
+    <option>252</option>
+    <option>254</option>
+    <option>293</option>
+    <option>305 WDHiGZ im. Obrońców Żoliborza</option>
+    <option>363</option>
+    <option>368</option>
+    <option>423 WDHiZ "Dąbrowa"</option>
+  </select>
+</div>
+<div class="form-group w-50 mx-auto">
+  <h3 class="text-center mt-4">Kto sprawdzał test</h3>
+  <input type="text" class="form-control" id="F3-ExaminersName" placeholder="Proszę wpisać imię i nazwisko max. jednej osoby" name="examinerName">
+</div>
+<div class="form-group w-50 mx-auto">
+  <h3 class="text-center mt-4">Data pisania testu</h3>
+    <input class="form-control" type="date" value='{{date}}' id="F4-DateOfWritingExam" name="dateOfWriting">
+  </div>
+    <h3 class="text-center mt-4">REZULTAT TESTU:</h3>
+    <div class="text-center mx-auto d-flex justify-content-around w-50">
+    <label class="custom-control custom-radio">
+      <input id="F5.1-PassedResult" name="passResult" type="radio" value=true class="custom-control-input" checked>
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">ZDAL</span>
+    </label>
+    <label class="custom-control custom-radio">
+      <input id="F5.2-PassedResult" name="passResult" type="radio" class="custom-control-input" value=false>
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">NIE ZDAL</span>
+    </label>
+  </div>
+  <div id="imageLinkForm" class="form-group w-50 mx-auto">
+    <h3 class="text-center mt-4">Link do zdjęcia testu z google drive:</h3>
+    <input type="url" class="form-control" id="F6-ImageURL" placeholder="np. https://drive.google.com/file/d/0Bz7mEYNbcJUSMlk5eFZqTUVYWmM" name="imageURL">
+    <small class="form-text text-center text-muted">Zrob skan testu, prześlij na google drive, skopiuj url zdjęcia w okienko i wytnij fragment: "/view?usp=sharing" </small>
+</div>
+  <div class="embed-responsive embed-responsive-16by9 mx-auto w-50 rounded">
+    <iframe class="embed-responsive-item" id="testImage" src="https://drive.google.com/file/d/0Bz7mEYNbcJUSNEs3WEtIbEd1QjA/preview"></iframe>no
+  </div>
+  <div class="bg-faded mb-5 w-50 rounded mx-auto">
+    <hr>
+  </div>
+  <div class="mt-4 fixed-bottom">
+    <button type="submit" id="submitButton" class="btn btn-lg btn-block w-50 disabled mx-auto" disabled>ZAPISZ TEST W BAZIE</button>
+  </div>
+</form>
+<!--.js resources for bootstrap and Jquery -->
+{{>JSresources}}
+<script src="./controllers/newTestMechanism.js" charset="utf-8"></script>
+</body>
+</html>

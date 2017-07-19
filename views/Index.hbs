@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Test przewodnikowski</title>
+  {{> head}}
+
+</head>
+
+
+<body class="blurred">
+{{> navbarBanner}}
+
+<div class="masthead">
+  <nav class="navbar navbar-light bg-faded rounded mb-3">
+    <div class="navbar-toggleable-sm" id="navbarCollapse">
+      <ul class="nav navbar-nav text-center justify-content-md-between">
+        <li class="nav-item {{RegisterATagActiveOrNot}}">
+          <a class="nav-link {{RegisterATagBorW}}" href="/register">Rejestracja</a>
+        </li>
+        <li class="nav-item {{LoginATagActiveOrNot}}">
+            <a class="nav-link {{LoginATagBorW}}" href="/login">Zaloguj się</a>
+        </li>
+        <li class="nav-item {{GuestATagactiveOrNot}}">
+          <a class="nav-link {{GuestATagBorW}}" href="/guest">Dla gości</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+
+<!--  FORM =======================================-->
+
+<div class="container">
+<div class="card forms ">
+  <div class="card-header">
+    <h1 class="display-4 text-center">Zaloguj się do systemu</h1>
+  </div>
+  <div class="card-block">
+    <form class="text-center" method="post" action="/admins/login">
+      <fieldset class="account-info">
+        <label>
+          email
+          <input type="text" name="email" placeholder="email">
+        </label>
+        <label>
+          hasło
+          <input type="password" name="password" placeholder="hasło">
+        </label>
+      </fieldset>
+        <!-- <label>
+          <input type="checkbox" name="remember"> pozostań zalogowany
+          </label> -->
+        <button type="submit" class="btn btn-default">Loguj</button>
+      </form>
+      {{#if flashMessage}}
+      <div class="alert alert-danger m-3 text-center" role="alert">
+        <!-- Jedno z pol nie wypełnione, proszę wypełnic wszystkie pola -->{{flashMessage}}
+      </div>
+      {{/if}}
+    </div>
+  </div>
+</div>
+
+
+<!--  MAIN BODY ================================== -->
+<!--.js resources for bootstrap and Jquery -->
+{{>JSresources}}
+  <script src="/controllers/login.js" charset="utf-8"></script>
+</body>
+</html>

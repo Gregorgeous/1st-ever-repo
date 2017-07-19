@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Test przewodnikowski</title>
+  <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/my.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <style media="screen">
+    #head{text-align: center;}
+    #buddy{text-align: center;}
+  </style>
+</head>
+
+
+<body class="blurred">
+
+{{>navbarBanner}}
+
+  <div class="masthead">
+    <nav class="navbar navbar-light bg-faded rounded mb-3">
+      <div class="navbar-toggleable-sm" id="navbarCollapse">
+        <ul class="nav navbar-nav text-center justify-content-md-between">
+          <li class="nav-item">
+            <a class="nav-link" href="/register">Rejestracja</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="/login">Zaloguj się</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/guest">Dla gości</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+<!--  FORM =======================================-->
+<div class="container">
+<div class="card forms ">
+  <div class="card-header">
+      <h1 id="head">{{err_msg_header1}}</h1>
+  </div>
+  <div class="card-block">
+      <p id="buddy">{{err_msg_body1}}</p>
+      <a href="/Index.hbs"></a>
+    </div>
+  </div>
+</div>
+
+
+<!--  MAIN BODY ================================== -->
+<!--========= Resources ---------------------------------------->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</body>
+</html>
