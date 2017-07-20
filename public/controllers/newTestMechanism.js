@@ -34,15 +34,17 @@ function sumUp () {
 }
 
 function loadImage(selector) {
+  var filePath = `${$(selector).val()}/preview`;
   if ($(selector).val() === '') {
     $('#imageLinkForm').addClass('has-danger').removeClass('has-success');
     $(selector).addClass('form-control-danger').removeClass('form-control-success');
     $('#testImage').attr('src', 'https://drive.google.com/file/d/0Bz7mEYNbcJUSNEs3WEtIbEd1QjA/preview');
-  } else {
+  } else if ($(selector).val() != filePath){
     $('#imageLinkForm').removeClass('has-danger').addClass('has-success');
     $(selector).removeClass('form-control-danger').addClass('form-control-success');
-    var filePath = `${$(selector).val()}/preview`;
+
     $('#testImage').attr('src', filePath);
+    $(selector).val(filePath);
   }
 }
 

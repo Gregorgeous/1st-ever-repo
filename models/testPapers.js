@@ -19,7 +19,7 @@ var TestSchema = new mongoose.Schema({
     trim:true
   },
   dateOfWriting: {
-    type: Date,
+    type: String,
     require: true
   },
   passResult: {
@@ -32,12 +32,12 @@ var TestSchema = new mongoose.Schema({
   },
 });
 
-TestSchema.methods.toJSON = function () {
-  var admin = this;
-  var adminObject = admin.toObject();
-
-  return _.pick(adminObject, ['_id', 'email']);
-};
+// TestSchema.methods.toJSON = function () {
+//   var admin = this;
+//   var adminObject = admin.toObject();
+//
+//   return _.pick(adminObject, ['_id', 'email']);
+// };
 
 
 TestSchema.statics.findAdminInDb = function(email, password,done){

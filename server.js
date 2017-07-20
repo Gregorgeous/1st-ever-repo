@@ -29,7 +29,7 @@ var app = express();
 app.use(express.static(path.join(__dirname, 'public' )));
 app.use(bodyParser.json());
 app.use(cookieParser('PawelToSpokoGoscAleBanNaWyjazdySpozaZHPToNiepotrzebnaWojna'));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
   secret: 'PawelToSpokoGoscAleBanNaWyjazdySpozaZHPToNiepotrzebnaWojna',
   resave: false,
@@ -193,7 +193,47 @@ app.get('/newtest', checkIfLoggedIn, (req, res) => {
     needsLogOutBtn: true});
 });
 
+app.get('/database',(req, res) => {
+  TestPaper.find({}, function (err, testPapers) {
+    if (err) throw err;
 
+    testPapers.forEach((eachTest) => {
+      var date = moment(eachTest.dateOfWriting).format('DD.MM.YYYY');
+      eachTest.dateOfWriting = date;
+    });
+
+    res.render('DataBaseWithDb.hbs', {
+      needsLogOutBtn: true,
+      test:testPapers,
+      testAddSucces: 'popup dziala, req.flash nie :( ',
+      testAddFailure: req.flash('testNotAdded')
+    });
+  });
+
+});
+
+// route for when you search a test on DB page
+app.post('/DBfilter', (req, res) => {
+  var ourNameQuery = _.pick(req.body, ['name']);
+
+  if (ourNameQuery.name === '') {
+    res.redirect('/database');
+  }
+
+  TestPaper.find(ourNameQuery, function (err, testFound) {
+    testFound.forEach((eachTest) => {
+      var date = moment(eachTest.dateOfWriting).format('DD.MM.YYYY');
+      eachTest.dateOfWriting = date;
+    });
+    console.log(`czy znalazlem search query ? : ${testFound}`);
+    res.render('DataBaseWithDb.hbs', {
+      needsLogOutBtn: true,
+      test:testFound,
+      testAddSucces: 'popup dziala, req.flash nie :( ',
+      testAddFailure: req.flash('testNotAdded')
+    });
+  });
+});
 // Adding new or editing existing resources in testPapers db:
 app.post('/database/testPapers/add', (req, res) => {
 var body = _.pick(req.body, [
@@ -205,7 +245,6 @@ var body = _.pick(req.body, [
  var addTestStatus;
  testPaper.save().then((test) =>{
   addTestStatus = req.flash('testAdded','Sukces! Test dodany do bazy danych');
-   console.log(`Najpierw sprawdz co sie zapisalo: ${test}`);
    console.log(`Teraz sprawdz jaka wartosc flasha:
      ${req.flash('testAdded')}`);
    res.redirect('/database');
@@ -215,13 +254,7 @@ var body = _.pick(req.body, [
  });
 });
 
-app.get('/database',checkIfLoggedIn,(req, res) => {
-  res.render('DataBase.hbs', {
-    needsLogOutBtn: true,
-    testAddSucces: 'popup dziala, req.flash nie :( ',
-    testAddFailure: req.flash('testNotAdded')
-  });
-});
+
 // route for when you click in test to edit it on DB page
 app.get('/database/testPapers/:_id', (req, res) => {
  res.send("TODO");

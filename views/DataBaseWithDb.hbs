@@ -12,16 +12,17 @@
   <!--  MAIN BODY ================================== -->
   <div class="mt-5">
     <h2 class="text-center">SZUKAJ TESTU..</h2>
-  <form class="form-inline w-50 p-1 rounded mx-auto " style="background-color:grey ;" >
-  <div class="form-group mx-auto">
+    <form class="form-inline w-50 p-1 rounded mx-auto " style="background-color:grey ;" method="post" action="/DBfilter">
+      <div class="form-group mx-auto">
     <label for="inputPassword2" class="sr-only">Imię lub nazwisko</label>
-    <input type="text" class="form-control" id="inputPassword2" placeholder="imię lub nazwisko próbanta">
-    <button type="submit" class="btn btn-primary"><i class="fa fa-search " aria-hidden="true"></i></button>
+    <input type="text" class="form-control" id="searchInput" placeholder="imię i/lub nazwisko próbanta" name='name'>
+    <button type="submit" class="btn btn-primary" id="searchButton"><i class="fa fa-search " aria-hidden="true"></i></button>
   </div>
 </form>
+</div>
 
 {{#if testAddSucces}}
-  <div class="alert alert-success" role="alert">
+  <div class="alert alert-success  w-75 mx-auto mt-2 text-center addTestAlert"  role="alert">
     {{testAddSucces}}
   </div>
 {{/if}}
@@ -31,116 +32,72 @@
   </div>
 {{/if}}
 
-</div>
-  <div class="card-deck m-5" id="cardDeck" >
-    <div class="row m-2">
-      <div class="col-md-4">
-        <div class="card">
-          <img class="card-img-top w-100" src="./assets/SampleTest.jpg" alt="Card image cap" >
-          <div class="card-block">
-            <h4 class="card-title text-center">Iks Iksiński</h4>
-            <div class="row">
-              <div class="col-8">
-                <h5 class="card-text">Data pisania testu: </h5>
-              </div>
-              <div class="col-4">
-                <p class="card-text">16.07.2017 </p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-8">
-                <h5 class="card-text">Status </h5>
-              </div>
-              <div class="col-4">
-                <p class="card-text">ZALICZYL </p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-8">
-                <h5 class="card-text">Środowisko </h5>
-              </div>
-              <div class="col-4">
-                <p class="card-text">Po drodze</p>
-              </div>
-            </div>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Ostatnia aktualizacja: X min temu</small>
-          </div>
+{{#if test}}
+<!-- <div class="card-deck m-5" id="cardDeck" > -->
+<div class="cardDeck row m-5" id="cardDeck" >
+{{#each test}}
+<!-- <div class="cardDeck"  > -->
+  <div class="card col-4 p-0 mx-auto mt-4">
+    <div class="embed-responsive embed-responsive-4by3 ">
+  <iframe class="embed-responsive-item card-img-top w-100" src={{this.imageURL}}></iframe>
+  </div>
+    <!-- <img class="card-img-top w-100" src="" alt="Card image cap" > -->
+    <div class="card-block pb-1">
+      <!-- <h4 class="card-title text-center">{{this.name}}</h4> -->
+      <p class="card-title text-center">{{@index}}: {{this.name}}</p>
+
+      <div class="row">
+        <div class="col-8">
+          <h5 class="card-text">Data pisania testu: </h5>
+        </div>
+        <div class="col-4">
+          <p class="card-text">{{this.dateOfWriting}} </p>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="card">
-          <img class="card-img-top w-100" src="./assets/SampleTest.jpg" alt="Card image cap" >
-          <div class="card-block">
-            <h4 class="card-title text-center">Iks Iksiński</h4>
-            <div class="row">
-              <div class="col-8">
-                <h5 class="card-text">Data pisania testu: </h5>
-              </div>
-              <div class="col-4">
-                <p class="card-text">16.07.2017 </p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-8">
-                <h5 class="card-text">Status </h5>
-              </div>
-              <div class="col-4">
-                <p class="card-text">ZALICZYL </p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-8">
-                <h5 class="card-text">Środowisko </h5>
-              </div>
-              <div class="col-4">
-                <p class="card-text">Po drodze</p>
-              </div>
-            </div>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Ostatnia aktualizacja: X min temu</small>
-          </div>
+      <hr>
+      <div class="row">
+        <div class="col-8">
+          <h5 class="card-text">Status </h5>
+        </div>
+        <div class="col-4">
+          {{#if this.passResult}}
+          <p class="card-text text-success"> ZALICZYŁ</p>
+          {{else}}
+          <p class="card-text text-danger"> NIE ZALICZYŁ</p>
+          {{/if}}
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="card">
-          <img class="card-img-top w-100" src="./assets/SampleTest.jpg" alt="Card image cap" >
-          <div class="card-block">
-            <h4 class="card-title text-center">Iks Iksiński</h4>
-            <div class="row">
-              <div class="col-8">
-                <h5 class="card-text">Data pisania testu: </h5>
-              </div>
-              <div class="col-4">
-                <p class="card-text">16.07.2017 </p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-8">
-                <h5 class="card-text">Status </h5>
-              </div>
-              <div class="col-4">
-                <p class="card-text">ZALICZYL </p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-8">
-                <h5 class="card-text">Środowisko </h5>
-              </div>
-              <div class="col-4">
-                <p class="card-text">Po drodze</p>
-              </div>
-            </div>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Ostatnia aktualizacja: X min temu</small>
-          </div>
+      <hr>
+      <div class="row">
+        <div class="col-8">
+          <h5 class="card-text">Środowisko </h5>
         </div>
+        <div class="col-4">
+          <p class="card-text">{{this.scoutGroup}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <!-- <button type="button" class="btn btn-outline-secondary btn-block "> -->
+          <a href='/database/{{this._id}}' class="mt-2 btn btn-outline-secondary mx-auto btn-lg">
+            Edytuj ten test
+          </a>
+        <!-- </button> -->
       </div>
     </div>
+    <div class="card-footer">
+      <small class="text-muted">Ostatnia aktualizacja: X min temu</small>
+    </div>
   </div>
+{{/each}}
+</div>
+{{else}}
+  <div class="jumbotron m-3 bordered w-75 mx-auto bg-warning">
+  <h1 class="display-3 text-center">Brak testow w bazie do wyświetlenia</h1>
+  <p class="lead">Dodaj nowy test do bazy wchodzac w zakladke "nowy test", gdy juz go dodasz, pojawi sie tutaj w zamian za tą wiadomośc.</p>
+  <hr class="my-4">
+  <p>W razie problemow, pisz na gryba002@gold.ac.uk lub bezpośrednio na fejsbuku :) </p>
+  </div>
+{{/if}}
 
   <!--.js resources for bootstrap and Jquery -->
   {{>JSresources}}
